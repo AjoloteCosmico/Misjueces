@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>misjueces.mx - Acceso Abogados</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%232a9d8f'>⚖️</text></svg>">
+   
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -333,7 +335,7 @@
                 
                 <div class="form-group">
                     <label for="registerCedula">Número de Cédula Profesional</label>
-                    <input type="text" id="registerCedula" class="form-control" placeholder="Ej. 12345678" required>
+                    <input type="text" id="registerCedula" name="cedula" :value="old('cedula')" class="form-control" placeholder="Ej. 12345678" required>
                 </div>
                 
                 <div class="form-group">
@@ -345,7 +347,7 @@
                 
                 <div class="form-group">
                     <label for="registerPhone">Número Celular (Opcional)</label>
-                    <input type="tel" id="registerPhone" class="form-control" placeholder="+52 55 1234 5678">
+                    <input type="tel" id="registerPhone" class="form-control" placeholder="+52 55 1234 5678" name="phone" :value="old('phone')" >
                 </div>
                 
                 <div class="form-group">

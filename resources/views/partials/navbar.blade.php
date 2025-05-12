@@ -111,14 +111,10 @@
                 @else
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('login*') ? 'active' : '' }}" href="{{ route('login') }}">
-                            <i class="fas fa-sign-in-alt me-1"></i>Ingresar
+                            <i class="fas fa-sign-in-alt me-1"></i>Ingresar / <i class="fas fa-user-plus me-1"></i>Registrarse
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::is('register*') ? 'active' : '' }}" href="{{ route('register') }}">
-                            <i class="fas fa-user-plus me-1"></i>Registrarse
-                        </a>
-                    </li>
+                   
                 @endauth
             </ul>
         </div>
