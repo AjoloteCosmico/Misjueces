@@ -18,13 +18,13 @@
             --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
             --text-dark: #2b2d42;
             --text-light: #f8f9fa;
-            
+
             --h1-size: 3rem;
             --h2-size: 2.25rem;
             --h3-size: 1.75rem;
             --body-size: 1.1rem;
             --caption-size: 0.9rem;
-            
+
             --border-radius: 16px;
             --spacing-unit: 8px;
         }
@@ -496,16 +496,16 @@
                 --h2-size: 2rem;
                 --h3-size: 1.5rem;
             }
-            
+
             .section {
                 padding: 4rem 0;
             }
-            
+
             .hero {
                 min-height: auto;
                 padding: 6rem 0;
             }
-            
+
             .steps-line {
                 display: none;
             }
@@ -518,6 +518,8 @@
     </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
     <!-- Header Navigation -->
@@ -534,7 +536,7 @@
                     <div class="footer-logo">misjueces.mx</div>
                     <p>Plataforma del pueblo para el pueblo dedicada a la democratización del Poder Judicial en México.</p>
                 </div>
-                
+
                 <div class="footer-links">
                     <h3>Navegación</h3>
                     <ul>
@@ -542,7 +544,7 @@
                         <li><a href="explorador.html">Exploración</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-links">
                     <h3>Legales</h3>
                     <ul>
@@ -551,7 +553,7 @@
                         <li><a href="#cookies">Política de cookies</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-links">
                     <h3>Contacto</h3>
                     <ul>
@@ -567,11 +569,16 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>&copy; 2023 misjueces.mx - Todos los derechos reservados</p>
             </div>
         </div>
     </footer>
+    <!-- jQuery y DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    @include('partials.legal')
 </body>
 </html>
