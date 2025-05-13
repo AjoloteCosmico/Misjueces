@@ -3,11 +3,11 @@
         <a class="navbar-brand" href="/">
             <i class="fas fa-balance-scale me-2"></i>JuezMX
         </a>
-        
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
@@ -31,7 +31,7 @@
                     </a>
                 </li>
             </ul>
-            
+
             <ul class="navbar-nav ms-auto">
                 @auth
                     <li class="nav-item dropdown">
@@ -77,9 +77,6 @@
             <a href="#" class="logo">misjueces.mx</a>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#registro" class="nav-link">Ingreso</a>
-                </li>
-                <li class="nav-item">
                     <a href="explorador.html" class="nav-link">Explora</a>
                 </li>
                 <li class="nav-item">
@@ -114,7 +111,7 @@
                             <i class="fas fa-sign-in-alt me-1"></i>Ingresar / <i class="fas fa-user-plus me-1"></i>Registrarse
                         </a>
                     </li>
-                   
+
                 @endauth
             </ul>
         </div>
