@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', config('app.name'))</title>
+    <title>@yield('title', 'MIS JUECES MX')</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%232a9d8f'>⚖️</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -518,6 +518,19 @@
     </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
+    <!-- CSS de Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    /* sobre escribir estilos de bootstrap */
+    .bg-primary {
+        background-color: var(--primary-teal) !important;
+    }
+    .btn-primary{
+        background-color: var(--primary-teal) !important;
+        border-color: var(--primary-teal) !important;
+    }
+</style>
+<!-- JS de Bootstrap (requiere Popper.js) -->
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
 </head>
@@ -526,6 +539,7 @@
     @include('partials.navbar')
     <!-- Footer -->
     <div class="container mt-4">
+        <div style="padding:5.5vmax"></div>
         @yield('content')
     </div>
 
@@ -571,14 +585,17 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2023 misjueces.mx - Todos los derechos reservados</p>
+                <p>&copy; 2025 misjueces.mx - Todos los derechos reservados</p>
             </div>
         </div>
     </footer>
+    <!-- Js de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- jQuery y DataTables JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    @stack('js')
     @include('partials.legal')
 </body>
 </html>

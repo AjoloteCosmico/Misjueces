@@ -3,7 +3,10 @@
         <div class="card-body">
             <h5 class="card-title">Documentos Legales</h5>
             <ul class="list-unstyled">
-                @foreach(App\Models\Legal::latest()->take(3)->get() as $legal)
+                @php
+                use App\Models\Legal;
+                @endphp
+                @foreach(Legal::latest()->take(3)->get() as $legal)
                 <li>
                     <a href="{{ route('legals.show', $legal->id) }}" class="text-decoration-none">
                         {{ $legal->titulo }} (v{{ $legal->version }})

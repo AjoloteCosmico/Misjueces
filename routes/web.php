@@ -43,20 +43,26 @@ Route::middleware(["auth"])->group(function () {
     Route::resource(
         "candidatos",
         App\Http\Controllers\CandidatoController::class
-    )->only(["index", "create", "show"]);
+    )->only(["index", "create"]);
 
     // Ruta para procesar el formulario de votación
     Route::post("votar", [
         App\Http\Controllers\VotacionController::class,
         "store",
     ])->name("votar.store");
+
+    Route::get("redirect_votar", [
+        App\Http\Controllers\VotacionController::class,
+        "redirect_votar",
+    ])->name("votar.redirect");
 });
 
 // Ruta para el autocompletado (pública, no requiere login)
-Route::get("/api/candidatos/buscar", [
+
+Route::get("candidatos/search_name", [
     App\Http\Controllers\CandidatoController::class,
     "buscar",
-]);
+])->name('buscar_candidato');
 // ===== [FIN] Sprint 2 ===== //
 
 // ===== [INICIO] Sprint 3 - PDF's legales ===== //

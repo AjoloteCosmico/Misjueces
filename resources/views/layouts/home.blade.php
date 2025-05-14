@@ -7,11 +7,11 @@
 @endsection
 
 @section('content')
-<<!-- Hero Section -->
+<!-- Hero Section -->
 <section class="hero">
         <div class="hero-content">
             <h1>Conoce y evalúa a las y los aspirantes a Juez</h1>
-            <a href="explorador.html" class="btn btn-primary">
+            <a href="{{route('votar.redirect')}}" class="btn btn-primary">
                 ¡Vota aquí!
                 <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
             </a>
@@ -139,8 +139,20 @@
 
 @endsection
 
-@section('scripts')
+@push('js')
+@if (session('success')=='ok')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">
+        Swal.fire({
+            icon: 'success',
+            title: '¡Votacion guardada!',
+            text: 'TU opinion ha sido enviada con exito',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+    @endif
 <script>
+    
     // Efecto de aparición suave al hacer scroll
     document.addEventListener('DOMContentLoaded', function() {
         const sections = document.querySelectorAll('section');
@@ -158,4 +170,5 @@
         });
     });
 </script>
-@endsection
+
+@endpush

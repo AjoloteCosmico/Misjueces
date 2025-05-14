@@ -524,7 +524,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Conoce y evalúa a las y los aspirantes a Juez</h1>
-            <a href="explorador.html" class="btn btn-primary">
+            <a href="{{route('votar.redirect')}}" class="btn btn-primary">
                 ¡Vota aquí!
                 <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
             </a>
