@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>misjueces.mx - Registro Ciudadano</title>
+    <title>misjueces.mx - Acceso Abogados</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%232a9d8f'>⚖️</text></svg>">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
@@ -20,13 +21,13 @@
             --text-dark: #2b2d42;
             --text-light: #f8f9fa;
             --error-red: #e76f51;
-            
+
             --h1-size: 2.5rem;
             --h2-size: 1.8rem;
             --h3-size: 1.5rem;
             --body-size: 1.1rem;
             --caption-size: 0.9rem;
-            
+
             --border-radius: 12px;
             --spacing-unit: 8px;
         }
@@ -249,60 +250,18 @@
                 --h1-size: 2rem;
                 --h2-size: 1.5rem;
             }
-            
+
             .auth-container {
                 padding: 2rem 0;
             }
-            
+
             .auth-card {
                 padding: 1.5rem;
             }
-            
+
             .auth-tab {
                 padding: 0.8rem 1rem;
                 font-size: 0.9rem;
-            }
-        }
-    </style>
-    <style>
-        /* [Mantener todo el CSS existente igual] */
-        /* Solo agregaremos un pequeño estilo para el enlace de alternar */
-        .toggle-form-link {
-            color: var(--primary-teal);
-            cursor: pointer;
-            font-weight: 600;
-            text-decoration: underline;
-            margin-top: 1rem;
-            display: inline-block;
-            text-align: center;
-            width: 100%;
-        }
-
-        .toggle-form-link:hover {
-            text-decoration: none;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--deep-teal);
-            color: var(--text-light);
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            :root {
-                --h1-size: 2rem;
-                --h2-size: 1.5rem;
-            }
-
-            .auth-container {
-                padding: 2rem 0;
-            }
-
-            .auth-card {
-                padding: 1.5rem;
             }
         }
     </style>
@@ -311,70 +270,84 @@
     <!-- Contenido Principal -->
     <main class="auth-container">
         <div class="auth-header">
-            <h1>Registro Ciudadano</h1>
-            <p>Únete para evaluar y comentar sobre el desempeño judicial</p>
+            <h1>Acceso para Abogados</h1>
+            <p>Verificación de credenciales mediante el Registro Nacional de Profesionistas</p>
         </div>
 
         <div class="auth-card glass-card">
-            <!-- Formulario de Login - Oculto por defecto -->
-            <form method="POST" action="{{ route('login') }}" id="loginForm" style="display: none;">
-                @csrf
+            <div class="auth-tabs">
+                <div class="auth-tab active">Iniciar Sesión</div>
+                <div class="auth-tab">Registro</div>
+            </div>
+
+            <!-- Formulario de Login -->
+            <form method="POST" action="{{ route('login') }}" id="loginForm" style="display: block;">
+            @csrf
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input class="form-control" placeholder="email@dominio.com" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                    <input  class="form-control" placeholder="email@dominio.com" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
-
+<!--
+                <div class="form-group">
+                    <label for="loginCURP">CURP</label>
+                    <input type="text" id="loginCURP" class="form-control" placeholder="Ej. ABCD123456HDFGHI01" required>
+                </div>
+                 -->
                 <div class="form-group">
                     <label for="loginPassword">Contraseña</label>
-                    <input class="form-control" placeholder="••••••••" type="password"
+                    <input  class="form-control" placeholder="••••••••" type="password"
                             name="password"
                             required autocomplete="current-password" />
-                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                </div>
 
-                <div class="block mt-4">
-                    <label for="remember_me" class="inline-flex items-center">
-                        <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                        <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-                    </label>
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
+                  <!-- Remember Me -->
+        <div class="block mt-4">
+            <label for="remember_me" class="inline-flex items-center">
+                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
+                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+            </label>
+        </div>
 
-                <div class="flex items-center justify-end mt-4">
-                    @if (Route::has('password.request'))
-                        <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                            {{ __('Forgot your password?') }}
-                        </a>
-                    @endif
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-sign-in-alt" style="margin-right: 10px;"></i>
-                        Acceder
-                    </button>
-                </div>
+        <div class="flex items-center justify-end mt-4">
+            @if (Route::has('password.request'))
+                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                    {{ __('Forgot your password?') }}
+                </a>
+            @endif
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt" style="margin-right: 10px;"></i>
+                    Acceder
+                </button>
+            </div>
 
-                <p class="toggle-form-link" onclick="showRegisterForm()">
-                    ¿No tienes cuenta? Regístrate aquí
-                </p>
             </form>
 
-            <!-- Formulario de Registro - Visible por defecto -->
-            <form method="POST" action="{{ route('register') }}" id="registerForm" style="display: block;">
-                @csrf
+            <!-- Formulario de Registro -->
+            <form method="POST" action="{{ route('register') }}" id="registerForm" style="display: none;">
+            @csrf
                 <div class="form-group">
                     <label for="registerName">Nombre Completo</label>
-                    <input id="name" class="form-control" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                    <input id="name" class="form-control"  type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
 
                 <div class="form-group">
+                    <label for="registerCedula">Número de Cédula Profesional</label>
+                    <input type="text" id="registerCedula" name="cedula" :value="old('cedula')" class="form-control" placeholder="Ej. 12345678" required>
+                </div>
+
+                <div class="form-group">
                     <label for="registerEmail">Correo Electrónico</label>
-                    <input id="email" class="form-control" type="email" name="email" :value="old('email')" required autocomplete="username" />
+                    <input id="email" class="form-control"  type="email" name="email" :value="old('email')" required autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
+
                 </div>
 
                 <div class="form-group">
                     <label for="registerPhone">Número Celular (Opcional)</label>
-                    <input type="tel" id="registerPhone" class="form-control" placeholder="+52 55 1234 5678" name="phone" :value="old('phone')">
+                    <input type="tel" id="registerPhone" class="form-control" placeholder="+52 55 1234 5678" name="phone" :value="old('phone')" >
                 </div>
 
                 <div class="form-group">
@@ -383,7 +356,8 @@
                             type="password"
                             name="password"
                             required autocomplete="new-password" />
-                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+
+                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
 
                 <div class="form-group">
@@ -391,31 +365,31 @@
                     <input id="password_confirmation" class="form-control"
                             type="password"
                             name="password_confirmation" required autocomplete="new-password" />
+
                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                 </div>
 
                 <div class="privacy-notice">
                     <i class="fas fa-user-shield"></i>
-                    <h3>Tu privacidad es importante</h3>
+                    <h3>Tu identidad será anónima</h3>
                     <p>Todas tus evaluaciones y comentarios se publicarán de manera anónima para proteger tu privacidad.</p>
                 </div>
+                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
+                {{ __('Already registered?') }}
+            </a>
 
                 <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>
-                    Enviar registro
+                    <i class="fas fa-user-plus" style="margin-right: 10px;"></i>
+                    Registrar como Abogado
                 </button>
-
-                <p class="toggle-form-link" onclick="showLoginForm()">
-                    ¿Ya estás registrado? Ingresa aquí
-                </p>
             </form>
 
             <div class="verification-process">
-                <h3><i class="fas fa-clipboard-check"></i> Sobre tu cuenta</h3>
+                <h3><i class="fas fa-clipboard-check"></i> Proceso de Verificación</h3>
                 <ol>
-                    <li>Registro simple y rápido como ciudadano</li>
-                    <li>Puedes evaluar y comentar sobre el desempeño judicial</li>
-                    <li>Tus contribuciones ayudan a mejorar el sistema judicial</li>
+                    <li>Descarga diaria de la base de datos del Registro Nacional de Profesionistas (SEP)</li>
+                    <li>Cotejo automático de tu cédula y nombre con los registros oficiales</li>
+                    <li>Activación de tu cuenta como jurista verificada</li>
                 </ol>
             </div>
         </div>
@@ -429,21 +403,57 @@
     </footer>
 
     <script>
-        // Función para mostrar el formulario de registro
-        function showRegisterForm() {
-            document.getElementById('loginForm').style.display = 'none';
-            document.getElementById('registerForm').style.display = 'block';
-            document.querySelector('.auth-header h1').textContent = 'Registro Ciudadano';
-            document.querySelector('.auth-header p').textContent = 'Únete para evaluar y comentar sobre el desempeño judicial';
-        }
+        // Toggle entre Login y Registro
+        const tabs = document.querySelectorAll('.auth-tab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
 
-        // Función para mostrar el formulario de login
-        function showLoginForm() {
-            document.getElementById('registerForm').style.display = 'none';
-            document.getElementById('loginForm').style.display = 'block';
-            document.querySelector('.auth-header h1').textContent = 'Iniciar Sesión';
-            document.querySelector('.auth-header p').textContent = 'Accede a tu cuenta para continuar';
-        }
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                if (tab.textContent === 'Iniciar Sesión') {
+                    loginForm.style.display = 'block';
+                    registerForm.style.display = 'none';
+                } else {
+                    loginForm.style.display = 'none';
+                    registerForm.style.display = 'block';
+                }
+            });
+        });
+
+
     </script>
+    // Modals para mostrar textos de legales
+    <div class="modal fade" id="legalModal" tabindex="-1" aria-labelledby="legalModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="legalModalLabel"></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body legal-content p-4">
+                    <!-- Contenido dinámico se insertará aquí -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function showAvisoLegal(tipo) {
+        fetch(`/avisos-legales/${tipo}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('legalModalLabel').textContent = data.titulo;
+                document.querySelector('.legal-content').innerHTML = data.contenido;
+                new bootstrap.Modal(document.getElementById('legalModal')).show();
+            });
+    }
+    </script>
+
 </body>
 </html>
