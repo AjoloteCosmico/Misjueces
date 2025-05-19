@@ -1,4 +1,12 @@
-public function store(Request $request)
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class LegalController extends Controller
+{
+    public function store(Request $request)
 {
     $request->validate([
         'titulo' => 'required|string|max:255',
@@ -13,4 +21,6 @@ public function store(Request $request)
     ]);
 
     return back()->with('success', 'Documento guardado');
+}
+
 }
