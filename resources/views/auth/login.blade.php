@@ -9,8 +9,206 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* [Mantener todo el CSS existente igual] */
-        /* Solo agregaremos un pequeño estilo para el enlace de alternar */
+        /* Sistema de diseño consistente */
+        :root {
+            --primary-teal: #2a9d8f;
+            --deep-teal: #264653;
+            --light-teal: #e9f5ef;
+            --glass-white: rgba(255, 255, 255, 0.9);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+            --text-dark: #2b2d42;
+            --text-light: #f8f9fa;
+            --error-red: #e76f51;
+
+            --h1-size: 2.5rem;
+            --h2-size: 1.8rem;
+            --h3-size: 1.5rem;
+            --body-size: 1.1rem;
+            --caption-size: 0.9rem;
+
+            --border-radius: 12px;
+            --spacing-unit: 8px;
+        }
+
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--light-teal) 0%, #ffffff 100%);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        /* Utilidades */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .glass-card {
+            background: var(--glass-white);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius);
+            box-shadow: var(--glass-shadow);
+            padding: 2.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-teal);
+            color: white;
+            box-shadow: 0 4px 15px rgba(42, 157, 143, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(42, 157, 143, 0.4);
+        }
+
+        /* Página de Login/Registro */
+        .auth-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            padding: 4rem 0;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .auth-header h1 {
+            font-size: var(--h1-size);
+            color: var(--deep-teal);
+            margin-bottom: 1rem;
+        }
+
+        .auth-header p {
+            font-size: var(--body-size);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+
+        .auth-tabs {
+            display: none; /* Ocultamos los tabs originales */
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: var(--body-size);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            font-size: var(--body-size);
+            transition: border 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-teal);
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
+        }
+
+        .privacy-notice {
+            background: rgba(42, 157, 143, 0.1);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .privacy-notice i {
+            color: var(--primary-teal);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .verification-process {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: rgba(233, 245, 239, 0.5);
+            border-radius: var(--border-radius);
+        }
+
+        .verification-process h3 {
+            font-size: var(--h3-size);
+            margin-bottom: 1rem;
+            color: var(--deep-teal);
+            display: flex;
+            align-items: center;
+        }
+
+        .verification-process h3 i {
+            margin-right: 10px;
+            color: var(--primary-teal);
+        }
+
+        .verification-process ol {
+            padding-left: 1.5rem;
+        }
+
+        .verification-process li {
+            margin-bottom: 0.8rem;
+        }
+
+        /* Nuevos estilos para el toggle */
         .toggle-form-link {
             color: var(--primary-teal);
             cursor: pointer;
@@ -18,9 +216,36 @@
             text-decoration: underline;
             margin-top: 1rem;
             display: inline-block;
+            text-align: center;
+            width: 100%;
         }
+
         .toggle-form-link:hover {
             text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-teal);
+            color: var(--text-light);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            :root {
+                --h1-size: 2rem;
+                --h2-size: 1.5rem;
+            }
+
+            .auth-container {
+                padding: 2rem 0;
+            }
+
+            .auth-card {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -33,23 +258,18 @@
         </div>
 
         <div class="auth-card glass-card">
-            <div class="auth-tabs" style="display: none;"> <!-- Ocultamos los tabs ya que usaremos otro método -->
-                <div class="auth-tab">Iniciar Sesión</div>
-                <div class="auth-tab active">Registro</div>
-            </div>
-
             <!-- Formulario de Login - Oculto por defecto -->
             <form method="POST" action="{{ route('login') }}" id="loginForm" style="display: none;">
-            @csrf
+                @csrf
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input  class="form-control" placeholder="email@dominio.com" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                    <input class="form-control" placeholder="email@dominio.com" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 <div class="form-group">
                     <label for="loginPassword">Contraseña</label>
-                    <input  class="form-control" placeholder="••••••••" type="password"
+                    <input class="form-control" placeholder="••••••••" type="password"
                             name="password"
                             required autocomplete="current-password" />
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
@@ -81,22 +301,22 @@
 
             <!-- Formulario de Registro - Visible por defecto -->
             <form method="POST" action="{{ route('register') }}" id="registerForm" style="display: block;">
-            @csrf
+                @csrf
                 <div class="form-group">
                     <label for="registerName">Nombre Completo</label>
-                    <input id="name" class="form-control"  type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                    <input id="name" class="form-control" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
 
                 <div class="form-group">
                     <label for="registerEmail">Correo Electrónico</label>
-                    <input id="email" class="form-control"  type="email" name="email" :value="old('email')" required autocomplete="username" />
+                    <input id="email" class="form-control" type="email" name="email" :value="old('email')" required autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 <div class="form-group">
                     <label for="registerPhone">Número Celular (Opcional)</label>
-                    <input type="tel" id="registerPhone" class="form-control" placeholder="+52 55 1234 5678" name="phone" :value="old('phone')" >
+                    <input type="tel" id="registerPhone" class="form-control" placeholder="+52 55 1234 5678" name="phone" :value="old('phone')">
                 </div>
 
                 <div class="form-group">
