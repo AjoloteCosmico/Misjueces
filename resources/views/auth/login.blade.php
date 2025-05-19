@@ -274,9 +274,36 @@
             text-decoration: underline;
             margin-top: 1rem;
             display: inline-block;
+            text-align: center;
+            width: 100%;
         }
+
         .toggle-form-link:hover {
             text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-teal);
+            color: var(--text-light);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            :root {
+                --h1-size: 2rem;
+                --h2-size: 1.5rem;
+            }
+
+            .auth-container {
+                padding: 2rem 0;
+            }
+
+            .auth-card {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -289,23 +316,18 @@
         </div>
 
         <div class="auth-card glass-card">
-            <div class="auth-tabs" style="display: none;"> <!-- Ocultamos los tabs ya que usaremos otro método -->
-                <div class="auth-tab">Iniciar Sesión</div>
-                <div class="auth-tab active">Registro</div>
-            </div>
-
             <!-- Formulario de Login - Oculto por defecto -->
             <form method="POST" action="{{ route('login') }}" id="loginForm" style="display: none;">
-            @csrf
+                @csrf
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input  class="form-control" placeholder="email@dominio.com" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                    <input class="form-control" placeholder="email@dominio.com" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 <div class="form-group">
                     <label for="loginPassword">Contraseña</label>
-                    <input  class="form-control" placeholder="••••••••" type="password"
+                    <input class="form-control" placeholder="••••••••" type="password"
                             name="password"
                             required autocomplete="current-password" />
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
@@ -337,22 +359,22 @@
 
             <!-- Formulario de Registro - Visible por defecto -->
             <form method="POST" action="{{ route('register') }}" id="registerForm" style="display: block;">
-            @csrf
+                @csrf
                 <div class="form-group">
                     <label for="registerName">Nombre Completo</label>
-                    <input id="name" class="form-control"  type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                    <input id="name" class="form-control" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
 
                 <div class="form-group">
                     <label for="registerEmail">Correo Electrónico</label>
-                    <input id="email" class="form-control"  type="email" name="email" :value="old('email')" required autocomplete="username" />
+                    <input id="email" class="form-control" type="email" name="email" :value="old('email')" required autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 <div class="form-group">
                     <label for="registerPhone">Número Celular (Opcional)</label>
-                    <input type="tel" id="registerPhone" class="form-control" placeholder="+52 55 1234 5678" name="phone" :value="old('phone')" >
+                    <input type="tel" id="registerPhone" class="form-control" placeholder="+52 55 1234 5678" name="phone" :value="old('phone')">
                 </div>
 
                 <div class="form-group">
