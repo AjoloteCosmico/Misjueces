@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Despacho Jurídico | Expertos en Derecho</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+    </head>
+    <body>
+        <!-- Barra de navegación -->
+        <header>
+            <nav>
+                <div class="logo">
+                    <h1>Despacho Jurídico</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#ubicacion">Ubicación</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li>
+                        <button id="open-about-modal">Quiénes Somos</button>
+                    </li>
+                    <li>
+                        <button id="open-appointment-modal">
+                            Agendar Cita
+                        </button>
+                    </li>
+                </ul>
+                <div class="burger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Sección Hero (Inicio) -->
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h2>Expertos en Soluciones Legales</h2>
+                <p>Protegiendo tus derechos con profesionalismo y ética.</p>
+                <a href="#contacto" class="btn">Contáctanos</a>
+            </div>
+        </section>
+
+        <!-- Sección Servicios -->
+        <section id="servicios" class="services">
+            <h2>Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Derecho Civil</h3>
+                    <p>Contratos, sucesiones, propiedad intelectual.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-gavel"></i>
+                    <h3>Derecho Penal</h3>
+                    <p>Defensa y asesoría en procesos penales.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Derecho Laboral</h3>
+                    <p>Despidos, demandas, negociaciones.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Ubicación -->
+        <section id="ubicacion" class="location">
+            <h2>Dónde Nos Ubicamos</h2>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.8882445525434!2d-99.1698386845268!3d19.42702074612139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff3757c7f5a5%3A0x1a2d7b9e7a4e4f0!2sPalacio%20de%20Justicia!5e0!3m2!1ses!2smx!4v1620000000000!5m2!1ses!2smx"
+                    width="600"
+                    height="450"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                ></iframe>
+            </div>
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contacto" class="contact">
+            <h2>Contacto</h2>
+            <form>
+                <input type="text" placeholder="Nombre" required />
+                <input type="email" placeholder="Correo" required />
+                <textarea placeholder="Mensaje" required></textarea>
+                <button type="submit" class="btn">Enviar</button>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2023 Despacho Jurídico. Todos los derechos reservados.</p>
+        </footer>
+
+        <!-- Modales -->
+        <!-- Modal "Quiénes Somos" -->
+        <div id="about-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Quiénes Somos</h2>
+                <p>
+                    Somos un despacho jurídico con más de 15 años de
+                    experiencia, comprometidos con la justicia y la defensa de
+                    nuestros clientes.
+                </p>
+                <p>
+                    Equipo multidisciplinario especializado en diversas áreas
+                    del derecho.
+                </p>
+            </div>
+        </div>
+
+        <!-- Modal "Agendar Cita" -->
+        <div id="appointment-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Agenda tu Cita</h2>
+                <form>
+                    <input type="text" placeholder="Nombre" required />
+                    <input type="email" placeholder="Correo" required />
+                    <input type="tel" placeholder="Teléfono" required />
+                    <select required>
+                        <option value="" disabled selected>
+                            Selecciona un servicio
+                        </option>
+                        <option value="civil">Derecho Civil</option>
+                        <option value="penal">Derecho Penal</option>
+                        <option value="laboral">Derecho Laboral</option>
+                    </select>
+                    <input type="date" required />
+                    <button type="submit" class="btn">Confirmar Cita</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="js/script.js"></script>
+    </body>
+</html>
